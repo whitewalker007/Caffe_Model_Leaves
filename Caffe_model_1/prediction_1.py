@@ -51,8 +51,8 @@ mean_array = np.asarray(mean_blob.data, dtype=np.float32).reshape(
 
 
 #Read model architecture and trained model's weights
-net = caffe.Net('/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/caffe_model_1/deploy_1.prototxt',
-                '/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/caffe_model_1/caffe_model_1_iter_3000.caffemodel',
+net = caffe.Net('/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/Caffe_model_1/deploy_1.prototxt',
+                '/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/Caffe_model_1/caffe_model_1_iter_3000.caffemodel',
                 caffe.TEST)
 
 #Define image transformers
@@ -87,7 +87,7 @@ for img_path in test_img_paths:
 '''
 Making submission file
 '''
-with open("/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/caffe_model_1/caffe_leaves_model_1.csv","w") as f:
+with open("/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/Caffe_model_1/caffe_leaves_model_1.csv","w") as f:
     f.write("id,label\n")
     for i in range(len(test_ids)):
         f.write(str(test_ids[i])+","+str(preds[i])+"\n")
