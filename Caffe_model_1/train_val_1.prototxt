@@ -16,7 +16,7 @@ layer {
   data_param {
     source: "/home/ubuntu/DeepLearning_crop_classification/input/LEAVES/train_lmdb"
     backend: LMDB
-    batch_size: 8
+    batch_size: 16
            }
        }
 layer {
@@ -35,7 +35,7 @@ layer {
   data_param {
     source: "/home/ubuntu/DeepLearning_crop_classification/input/LEAVES/validation_lmdb"
     backend: LMDB
-    batch_size: 2
+    batch_size: 8
              }
        }
 layer {
