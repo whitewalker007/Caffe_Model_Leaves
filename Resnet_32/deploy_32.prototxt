@@ -1,7 +1,7 @@
 name: "ResNet-32"
 layer {
   name: "resnet_32"
-  type: "Data"
+  type: "Input"
   top: "data"
   top: "label"
   input_param {shape: { dim: 1 dim: 3 dim: 224 dim: 224 }}
