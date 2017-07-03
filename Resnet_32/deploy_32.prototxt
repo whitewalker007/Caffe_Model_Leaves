@@ -4,12 +4,7 @@ layer {
   type: "Data"
   top: "data"
   top: "label"
-  memory_data_param {
-    batch_size: 16
-    channels: 3
-    height: 224
-    width: 224
-  }
+  input_param {shape: { dim: 1 dim: 3 dim: 224 dim: 224 }}
 }
 layer {
 	bottom: "data"
