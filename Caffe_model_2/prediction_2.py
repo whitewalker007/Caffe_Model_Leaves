@@ -1,14 +1,14 @@
 '''
-Title           :Prediction_32.py
+Title           :Predictions_2.py
 Description     :Makes leaves based predictions and generates a csv file.
 Author          :Nitin Shukla
-Date Created    :20170703
+Date Created    :20170630
 '''
 
 import os
 import glob
 import sys
-sys.path.append('/home/ubuntu/src/caffe')
+sys.path.append('/home/ubuntu/caffe/python')
 
 import cv2
 import caffe
@@ -19,8 +19,8 @@ from caffe.proto import caffe_pb2
 caffe.set_mode_cpu()
 
 #Spatial dimension
-IMG_WIDTH = 224
-IMG_HEIGHT = 224
+IMG_WIDTH = 227
+IMG_HEIGHT = 227
 
 '''
 Processing
@@ -51,8 +51,8 @@ mean_array = np.asarray(mean_blob.data, dtype=np.float32).reshape(
 
 
 #Read model architecture and trained model's weights
-net = caffe.Net('/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/Resnet_32/deploy_32.prototxt',
-                '/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/Resnet_32/Resnet_Leaves_32_iter_10000.caffemodel',
+net = caffe.Net('/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/Caffe_model_2/deploy_2.prototxt',
+                '/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/Caffe_model_2/caffe_model_2_iter_3000.caffemodel',
                 caffe.TEST)
 
 #Define image transformers
@@ -64,7 +64,7 @@ transformer.set_transpose('data', (2,0,1))
 Making predicitions
 '''
 #Reading image paths
-test_img_paths = [img_path for img_path in glob.glob("/home/ubuntu/DeepLearning_crop_classification/input/LEAVES/test/*jpg")]
+test_img_paths = [img_path for img_path in glob.glob("/home/ubuntu/DeepLearning_crop_classification/input_2/test/*jpg")]
 
 #Making predictions
 test_ids = []
@@ -87,7 +87,7 @@ for img_path in test_img_paths:
 '''
 Making submission file
 '''
-with open("/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/Resnet_32/Resnet_leaves_32.csv","w") as f:
+with open("/home/ubuntu/DeepLearning_crop_classification/Caffe_Model_Leaves/Caffe_model_2/caffe_leaves_model_2.csv","w") as f:
     f.write("id,label\n")
     for i in range(len(test_ids)):
         f.write(str(test_ids[i])+","+str(preds[i])+"\n")
